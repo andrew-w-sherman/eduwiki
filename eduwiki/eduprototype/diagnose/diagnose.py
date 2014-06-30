@@ -105,7 +105,6 @@ class WikiEducate:
         if cached:
             page_content = cached
         else:
-            self.page = wikipedia.page(self.topic)
             page_content = self.page.content
             self.fetcher.cache(self.topic+"-plainTextSummary", page_content)
         first_n_paragraphs = "\n".join(page_content.split("\n")[:n])
@@ -117,7 +116,6 @@ class WikiEducate:
         if cached:
             links = json.loads(cached)
         else:
-            self.page = wikipedia.page(self.topic)
             links = self.page.links
             self.fetcher.cache(self.topic+"-links", json.dumps(links))
         return links
@@ -128,7 +126,6 @@ class WikiEducate:
         if cached:
             categories = json.loads(cached)
         else:
-            self.page = wikipedia.page(self.topic)
             categories = self.page.categories
             self.fetcher.cache(self.topic+"-categories",
                                json.dumps(categories))
@@ -141,7 +138,6 @@ class WikiEducate:
         if cached:
             whatis = cached
         else:
-            self.page = wikipedia.page(self.topic)
             regex_str = '('+self.topic[:5]+'('+self.topic[5:]+')?'+'|'+'('+self.topic[:len(self.topic)-5]+')?'+self.topic[len(self.topic)-5:] + ')' + '(\s[^\.]*(is|was|can be regarded as)|[^,\.]{,15}?,)\s([^\.]+)\.(?=\s)'
             mentions = re.findall(regex_str, self.page.content, re.IGNORECASE)
 
@@ -152,6 +148,23 @@ class WikiEducate:
             self.fetcher.cache(self.topic+"-whatis", whatis)
         return whatis
 
+    def backlinks(self):
+        cached = self.cache and self.fetcher.fetch(self.topic+"-backlinks")
+        if cached:
+            backlinks = json.loads(cached)
+        else:
+            backlinks = self.page.backlinks
+            self.fetcher.cache(self.topic+"-backlinks", json.dumps(backlinks))
+        return backlinks
+
+    def mutuallinks(self):
+        cached = self.cache and self.fetcher.fetch(self.topic+"-mutuallinks")
+        if cached:
+            mutuallinks = json.loads(cached)
+        else:
+            mutuallinks = self.page.mutuallinks
+            self.fetcher.cache(self.topic+"-mutuallinks", json.dumps(mutuallinks))
+        return mutuallinks
 
 class DiskCacheFetcher:
     def __init__(self, cache_dir=None):
