@@ -148,6 +148,8 @@ class WikiEducate:
             self.fetcher.cache(self.topic+"-whatis", whatis)
         return whatis
 
+    #gets pages in alphabetical order that link to the page
+    @property
     def backlinks(self):
         cached = self.cache and self.fetcher.fetch(self.topic+"-backlinks")
         if cached:
@@ -157,6 +159,16 @@ class WikiEducate:
             self.fetcher.cache(self.topic+"-backlinks", json.dumps(backlinks))
         return backlinks
 
+    @property
+    def back(self):
+        if self.back:
+            return self.back
+        else:
+            return len(self.backlinks)
+
+    # gets pages in alphabetical order that link to the page and are
+    # linked to by the page
+    @property
     def mutuallinks(self):
         cached = self.cache and self.fetcher.fetch(self.topic+"-mutuallinks")
         if cached:
@@ -165,6 +177,13 @@ class WikiEducate:
             mutuallinks = self.page.mutuallinks
             self.fetcher.cache(self.topic+"-mutuallinks", json.dumps(mutuallinks))
         return mutuallinks
+
+    @property
+    def mutual(self):
+        if self.mutual:
+            return self.mutual
+        else:
+            return len(self.mutuallinks)
 
 class DiskCacheFetcher:
     def __init__(self, cache_dir=None):
