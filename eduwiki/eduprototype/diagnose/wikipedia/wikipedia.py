@@ -626,7 +626,7 @@ class WikipediaPage(object):
     @property
     def mutuallinks(self):
         if not getattr(self, '_mutuallinks', False):
-            self._mutuallinks = list(set(self._links) & set(self._backlinks))
+            self._mutuallinks = list(set(self.links) & set(self.backlinks))
 
         return self._mutuallinks
 

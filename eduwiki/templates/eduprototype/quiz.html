@@ -19,6 +19,7 @@
                         {% for answer in question.answers %}
                             <tr><td/><input type="radio" name="q{{ question.number }}" value="{{ answer.correct }}"><td>{{ answer.text }}</td></tr>
                         {% endfor %}
+                        <tr><td/><input type="radio" name="q{{ question.number }}" value="incorrect"><td>I don't know</td></tr>
                     </table>
                 </div>
                 {% endfor %}

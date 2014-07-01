@@ -20,8 +20,8 @@ def query(search_term, depth=1, children=3):
         children = 6
 
     # get the topic and the names of its prereq links
-    main_topic = WikiEducate(normal(search_term))
-    prereqs = main_topic.wikilinks(children)
+    main_topic = WikiEducate(search_term)
+    prereqs = main_topic.good_wikilinks(children)
     topic_name = main_topic.page.title
 
     # create a JSON tree which will be recursively built
@@ -31,18 +31,12 @@ def query(search_term, depth=1, children=3):
     # note: I'm referring to the actual string of text as the distractor
     topic_text = main_topic.plainTextSummary(1)
     description = main_topic.returnWhatIs()
-    distractor_names = main_topic.wikilinks(children)
-    distractors = []
-    for i in range(0, 3):
-        distractor_name = normal(distractor_names[i])
-        distractor_obj = WikiEducate(distractor_name)
-        distractor = distractor_obj.returnWhatIs()
-        distractors.append(distractor)  # append dis tractor *vroom*
+    distractors = [prereq.returnWhatIs() for prereq in prereqs]
 
     # run for children if depth left
     if depth != 0:
-        for j in range(0, children):
-            json_child = query(prereqs[j], depth=depth - 1, children=children)
+        for prereq in prereqs:
+            json_child = query(prereq.topic, depth=depth - 1, children=children)
             json_children.append(json_child)
 
     # assemble the tree and return it
@@ -78,14 +72,12 @@ class WikiEducate:
         text = self.page.wikitext()
         return text
 
-    def wikilinks(self, num):
+    def wikilinks(self):
         wtext = self.wikitext()
         # print wtext
         wikilink_rx = re.compile(r'\[\[([^|\]]*\|)?([^\]]+)\]\]')
         link_array = []
         for m in wikilink_rx.finditer(wtext):
-            if len(link_array) > num:
-                break
             if m.group(1) is not None:
                 if "Image" in m.group(1) or "Template" in m.group(1) or \
                         "File" in m.group(1):
@@ -97,6 +89,28 @@ class WikiEducate:
                     continue
                 link_array.append(m.group(2))
         return link_array
+    
+    def good_wikilinks(self, num):
+        link_names = self.wikilinks()
+        link_pages = []
+        for name in link_names:
+            try:
+                link_pages.append(WikiEducate(normal(name)))
+            except:
+                continue
+        good_pages = []
+        for link_page in link_pages:
+            if len(good_pages) >= num: break
+            #simple filter, needs fixing
+            if link_page.topic in self.mutuallinks and link_page.back < 400:
+                good_pages.append(link_page)
+        #fill out the rest if not enough
+        for link_page in link_pages:
+            if len(good_pages) >= num: break
+            if link_page.topic not in self.mutuallinks or not link_page.back < 400:
+                good_pages.append(link_page)
+        return good_pages
+        
 
     # Returns (up to) first n paragraphs of given Wikipedia article.
     def plainTextSummary(self, n=2):
@@ -161,9 +175,10 @@ class WikiEducate:
 
     @property
     def back(self):
-        if self.back:
-            return self.back
+        if getattr(self, '_back', False):
+            return self._back
         else:
+            self._back = len(self.backlinks)
             return len(self.backlinks)
 
     # gets pages in alphabetical order that link to the page and are
@@ -180,9 +195,10 @@ class WikiEducate:
 
     @property
     def mutual(self):
-        if self.mutual:
-            return self.mutual
+        if getattr(self, '_mutual', False):
+            return self._mutual
         else:
+            self._mutual = len(self.mutuallinks)
             return len(self.mutuallinks)
 
 class DiskCacheFetcher:
