@@ -1,7 +1,9 @@
 from django.shortcuts import render, render_to_response, redirect
 from django.http import HttpResponse, HttpRequest
 from django.template import RequestContext
-from diagnose.diagnose import query
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from diagnose import query
 from diagnose.wikipedia import DisambiguationError, page
 from random import randint
 import json

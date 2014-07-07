@@ -72,12 +72,14 @@ class WikiEducate:
         text = self.page.wikitext()
         return text
 
-    def wikilinks(self):
+    def wikilinks(self, num):
         wtext = self.wikitext()
         # print wtext
         wikilink_rx = re.compile(r'\[\[([^|\]]*\|)?([^\]]+)\]\]')
         link_array = []
         for m in wikilink_rx.finditer(wtext):
+            if len(link_array) >= num:
+                break
             if m.group(1) is not None:
                 if "Image" in m.group(1) or "Template" in m.group(1) or \
                         "File" in m.group(1):
@@ -91,7 +93,7 @@ class WikiEducate:
         return link_array
     
     def good_wikilinks(self, num):
-        link_names = self.wikilinks()
+        link_names = self.wikilinks(num*5)
         link_pages = []
         for name in link_names:
             try:
@@ -212,9 +214,7 @@ class DiskCacheFetcher:
         # Use MD5 hash of the URL as the filename
         filename = hashlib.md5(url).hexdigest()
         filepath = os.path.join(self.cache_dir, filename)
-        if __name__ != "__main__":
-            filepath = os.path.join('diagnose', filepath)
-            filepath = os.path.join('eduprototype', filepath)
+        filepath = os.path.join('diagnose', filepath)
 
         if os.path.exists(filepath):
             if int(time.time()) - os.path.getmtime(filepath) < max_age:
@@ -227,9 +227,7 @@ class DiskCacheFetcher:
         # Use MD5 hash of the URL as the filename
         filename = hashlib.md5(url).hexdigest()
         filepath = os.path.join(self.cache_dir, filename)
-        if __name__ != "__main__":
-            filepath = os.path.join('diagnose', filepath)
-            filepath = os.path.join('eduprototype', filepath)
+        filepath = os.path.join('diagnose', filepath)
 
         fd, temppath = tempfile.mkstemp()
         fp = os.fdopen(fd, 'w')
