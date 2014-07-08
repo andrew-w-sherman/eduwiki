@@ -1,0 +1,262 @@
+This article describes the mathematics of the Standard Model of particle physics, a gauge quantum field theory containing the internal symmetries of the unitary product group SU(3)SU(2)U(1). The theory is commonly viewed as containing the fundamental set of particles  the leptons, quarks, gauge bosons and the Higgs particle, however due to the nature of quantum field theory, these "fundamental" particles can be viewed differently depending on the situation (see below).
+The Standard Model is renormalizable and mathematically self-consistent, however despite having huge and continued successes in providing experimental predictions it does leave some unexplained phenomena. In particular, although the physics of special relativity is incorporated, general relativity is not, and the Standard Model will fail at energies or distances where the graviton is expected to emerge. Therefore in a modern field theory context, it is seen as an effective field theory.
+This article requires some background in physics and mathematics, but is designed as both an introduction and a reference.
+
+
+== Quantum Field Theory ==
+
+The standard model is a quantum field theory, meaning its fundamental objects are quantum fields which are defined at all points in spacetime. These fields are
+the fermion field, , which accounts for "matter particles";
+the electroweak boson fields , and B;
+the gluon field, Ga; and
+the Higgs field, .
+That these are quantum rather than classical fields has the mathematical consequence that they are operator-valued. In particular, values of the fields generally do not commute. As operators, they act upon the quantum state (ket vector).
+The dynamics of the quantum state and the fundamental fields are determined by the Lagrangian density  (usually for short just called the Lagrangian). This plays a role similar to that of the Schrdinger equation in non-relativistic quantum mechanics, but a Lagrangian is not an equation  rather, it is a polynomial function of the fields and their derivatives. While it would be possible to derive a system of differential equations governing the fields from the Langrangian, it is more common to use other techniques to compute with quantum field theories.
+The standard model is furthermore a gauge theory, which means there are degrees of freedom in the mathematical formalism which do not correspond to changes in the physical state. The gauge group of the standard model is SU(3)SU(2)U(1), where U(1) acts on B and , SU(2) acts on W and , and SU(3) acts on G. The fermion field  also transforms under these symmetries, although all of them leave some parts of it unchanged.
+
+
+=== The role of the quantum fields ===
+In classical mechanics, the state of a system can usually be captured by a small set of variables, and the dynamics of the system is thus determined by the time evolution of these variables. In classical field theory, the field is part of the state of the system, so in order to describe it completely one effectively introduces separate variables for every point in spacetime (even though there are many restrictions on how the values of the field "variables" may vary from point to point, for example in the form of field equations involving partial derivatives of the fields).
+In quantum mechanics, the classical variables are turned into operators, but these do not capture the state of the system, which is instead encoded into a wavefunction  or more abstract ket vector. If  is an eigenstate with respect to an operator P, then P =  for the corresponding eigenvalue , and hence letting an operator P act on  is analogous to multiplying  by the value of the classical variable to which P corresponds. By extension, a classical formula where all variables have been replaced by the corresponding operators will behave like an operator which, when it acts upon the state of the system, multiplies it by the analogue of the quantity that the classical formula would compute. The formula as such does however not contain any information about the state of the system; it would evaluate to the same operator regardless of what state the system is in.
+Quantum fields relate to quantum mechanics as classical fields do to classical mechanics, i.e., there is a separate operator for every point in spacetime, and these operators do not carry any information about the state of the system; they are merely used to exhibit some aspect of the state, at the point to which they belong. In particular, the quantum fields are not wavefunctions, even though the equations which govern their time evolution may be deceptively similar to those of the corresponding wavefunction in a semiclassical formulation. There is no variation in strength of the fields between different points in spacetime; the variation that happens is rather one of phase factors.
+
+
+=== Vectors, scalars, and spinors ===
+Mathematically it may look as though all of the fields are vector-valued (in addition to being operator-valued), since they all have several components, can be multiplied by matrices, etc., but physicists assign a more specific meaning to the word: a vector is something which transforms like a four-vector under Lorentz transformations, and a scalar is something which is invariant under Lorentz transformations. The B, Wj, and Ga fields are all vectors in this sense, so the corresponding particles are said to be vector bosons. The Higgs field  is a scalar.
+The fermion field  does transform under Lorentz transformations, but not like a vector should; rotations will only turn it by half the angle a proper vector should. Therefore these constitute a third kind of quantity, which is known as a spinor.
+It is common to make use of abstract index notation for the vector fields, in which case the vector fields all come with a Lorentzian index , like so: , and . If abstract index notation is used also for spinors then these will carry a spinorial index and the Dirac gamma will carry one Lorentzian and two spinorian indices, but it is more common to regard spinors as column matrices and the Dirac gamma  as a matrix which additionally carries a Lorentzian index. The Feynman slash notation can be used to turn a vector field into a linear operator on spinors, like so: ; this may involve raising and lowering indices.
+
+
+== Alternative Presentations of the Fields ==
+
+As is common in quantum theory, there is more than one way to look at things. At first the basic fields given above may not seem to correspond well with the "fundamental particles" in the chart above, but there are several alternative presentations which, in particular contexts, may be more appropriate than those that are given above.
+
+
+=== Fermions ===
+Rather than having one fermion field , it can be split up into separate components for each type of particle. This mirrors the historical evolution of quantum field theory, since the electron component e (describing the electron and its antiparticle the positron) is then the original  field of quantum electrodynamics, which was later accompanied by  and  fields for the muon and tauon respectively (and their antiparticles). Electroweak theory added , and  for the corresponding neutrinos, and the quarks add still further components. In order to be four-spinors like the electron and other lepton components, there must be one quark component for every combination of flavour and colour, bringing the total to 24 (3 for charged leptons, 3 for neutrinos, and 233 = 18 for quarks).
+An important definition is the barred fermion field  is defined to be , where  denotes the Hermitian adjoint and 0 is the zeroth gamma matrix. If  is thought of as an n1 matrix then  should be thought of as a 1n matrix.
+
+
+==== A chiral theory ====
+An independent decomposition of  is that into chirality components:
+"Left" chirality:  
+"Right" chirality:  
+where  is the fifth gamma matrix. This is very important in the Standard Model because left and right chirality components are treated differently by the gauge interactions.
+In particular, under weak isospin SU(2) transformations the left-handed particles are weak-isospin doublets, whereas the right-handed are singlets  i.e. the weak isospin of R is zero. Put more simply, the weak interaction could rotate e.g. a left-handed electron into a left-handed neutrino (with emission of a W), but could not do so with the same right-handed particles. As an aside, the right-handed neutrino originally did not exist in the standard model  but the discovery of neutrino oscillation implies that neutrinos must have mass, and since chirality can change during the propagation of a massive particle, right-handed neutrinos must exist in reality. This does not however change the (experimentally-proven) chiral nature of the weak interaction.
+Furthermore, U(1) acts differently on  than on  (because they have different weak hypercharges).
+
+
+==== Mass and interaction eigenstates ====
+A distinction can thus be made between, for example, the mass and interaction eigenstates of the neutrino. The former is the state which propagates in free space, whereas the latter is the different state that participates in interactions. Which is the "fundamental" particle? For the neutrino, it is conventional to define the "flavour" (
+e, 
+, or 
+) by the interaction eigenstate, whereas for the quarks we define the flavour (up, down, etc.) by the mass state. We can switch between these states using the CKM matrix for the quarks, or the PMNS matrix for the neutrinos (the charged leptons on the other hand are eigenstates of both mass and flavour).
+As an aside, if a complex phase term exists within either of these matrices, it will give rise to direct CP violation, which could explain the dominance of matter over antimatter in our current universe. This has been proven for the CKM matrix, and is expected for the PMNS matrix.
+
+
+==== Positive and negative energies ====
+Finally, the quantum fields are sometimes decomposed into "positive" and "negative" energy parts:  = + + . This is not so common when a quantum field theory has been set up, but often features prominently in the process of quantizing a field theory.
+
+
+=== Bosons ===
+Due to the Higgs mechanism, the electroweak boson fields , and B "mix" to create the states which are physically observable. To retain gauge invariance, the underlying fields must be massless, but the observable states can gain masses in the process. These states are:
+The massive neutral boson:
+
+The massless neutral boson:
+
+The massive charged W bosons:
+
+where W is the Weinberg angle.
+The A field is the photon, which corresponds classically to the well-known electromagnetic four-potential  i.e. the electric and magnetic fields. The Z field actually contributes in every process the photon does, but due to its large mass, the contribution is usually negligible.
+
+
+== Perturbative QFT and the Interaction Picture ==
+Much of the qualitative descriptions of the standard model in terms of "particles" and "forces" comes from the perturbative quantum field theory view of the model. In this, the Langrangian is decomposed as  into separate free field and interaction Langrangians. The free fields care for particles in isolation, whereas processes involving several particles arise through interactions. The idea is that the state vector should only change when particles interact, meaning a free particle is one whose quantum state is constant. This corresponds to the interaction picture in quantum mechanics.
+In the more common Schrdinger picture, even the states of free particles change over time: typically the phase changes at a rate which depends on their energy. In the alternative Heisenberg picture, state vectors are kept constant, at the price of having the operators (in particular the observables) be time-dependent. The interaction picture constitutes an intermediate between the two, where some time dependence is placed in the operators (the quantum fields) and some in the state vector. In QFT, the former is called the free field part of the model, and the latter is called the interaction part. The free field model can be solved exactly, and then the solutions to the full model can be expressed as perturbations of the free field solutions, for example using the Dyson series.
+It should be observed that the decomposition into free fields and interactions is in principle arbitrary. For example renormalization in QED modifies the mass of the free field electron to match that of a physical electron (with an electromagnetic field), and will in doing so add a term to the free field Lagrangian which must be cancelled by a counterterm in the interaction Lagrangian, that then shows up as a two-line vertex in the Feynman diagrams. This is also how the Higgs field is thought to give particles mass: the part of the interaction term which corresponds to the (nonzero) vacuum expectation value of the Higgs field is moved from the interaction to the free field Lagrangian, where it looks just like a mass term having nothing to do with Higgs.
+
+
+=== Free fields ===
+Under the usual free/interaction decomposition, which is suitable for low energies, the free fields obey the following equations:
+The fermion field  satisfies the Dirac equation;  for each type  of fermion.
+The photon field A satisfies the wave equation .
+The Higgs field  satisfies the KleinGordon equation.
+The weak interaction fields Z, W also satisfy the KleinGordon equation.
+These equations can be solved exactly. One usually does so by considering first solutions that are periodic with some period L along each spatial axis; later taking the limit: L   will lift this periodicity restriction.
+In the periodic case, the solution for a field F (any of the above) can be expressed as a Fourier series of the form
+
+where:
+ is a normalization factor; for the fermion field  it is , where  is the volume of the fundamental cell considered; for the photon field A it is .
+The sum over p is over all momenta consistent with the period L, i.e., over all vectors  where  are integers.
+The sum over r covers other degrees of freedom specific for the field, such as polarization or spin; it usually comes out as a sum from 1 to 2 or from 1 to 3.
+Ep is the relativistic energy for a momentum p quantum of the field,  when the rest mass is m.
+ar(p) and  are annihilation and creation respectively operators for "a-particles" and "b-particles" respectively of momentum p; "b-particles" are the antiparticles of "a-particles". Different fields have different "a-" and "b-particles". For some fields, a and b are the same.
+ur(p) and vr(p) are non-operators which carry the vector or spinor aspects of the field (where relevant).
+ is the four-momentum for a quanta with momentum p.  denotes an inner product of four-vectors.
+In the limit L  , the sum would turn into an integral with help from the V hidden inside . The numeric value of  also depends on the normalization chosen for  and .
+Technically,  is the Hermitian adjoint of the operator ar(p) in the inner product space of ket vectors. The identification of  and ar(p) as creation and annihilation operators comes from comparing conserved quantities for a state before and after one of these have acted upon it.  can for example be seen to add one particle, because it will add 1 to the eigenvalue of the a-particle number operator, and the momentum of that particle ought to be p since the eigenvalue of the vector-valued momentum operator increases by that much. For these derivations, one starts out with expressions for the operators in terms of the quantum fields. That the operators with  are creation operators and the one without annihilation operators is a convention, imposed by the sign of the commutation relations postulated for them.
+An important step in preparation for calculating in perturbative quantum field theory is to separate the "operator" factors a and b above from their corresponding vector or spinor factors u and v. The vertices of Feynman graphs come from the way that u and v from different factors in the interaction Lagrangian fit together, whereas the edges come from the way that the as and bs must be moved around in order to put terms in the Dyson series on normal form.
+
+
+=== Interaction terms and the path integral approach ===
+The Lagrangian can also be derived without using creation and annihilation operators (the "canonical" formalism), by using a "path integral" approach, pioneered by Feynman building on the earlier work of Dirac. See e.g. Path integral formulation on Wikipedia or A. Zee's QFT in a nutshell. This is one possible way that the Feynman diagrams, which are pictorial representations of interaction terms, can be derived relatively easily. A quick derivation is indeed presented at the article on Feynman diagrams.
+
+
+== Lagrangian Formalism ==
+
+We can now give some more detail about the aforementioned free and interaction terms appearing in the Standard Model Lagrangian density. Any such term must be both gauge and reference-frame invariant, otherwise the laws of physics would depend on an arbitrary choice or the frame of an observer. Therefore the global Poincar symmetry, consisting of translational symmetry, rotational symmetry and the inertial reference frame invariance central to the theory of special relativity must apply. The local SU(3)SU(2)U(1) gauge symmetry is the internal symmetry. The three factors of the gauge symmetry together give rise to the three fundamental interactions, after some appropriate relations have been defined, as we shall see.
+A complete formulation of the Standard Model Lagrangian with all the terms written together can be found e.g. here.
+
+
+=== Kinetic terms ===
+A free particle can be represented by a mass term, and a kinetic term which relates to the "motion" of the fields.
+
+
+==== Fermion fields ====
+The kinetic term for a Dirac fermion is
+
+where the notations are carried from earlier in the article.  can represent any, or all, Dirac fermions in the standard model. Generally, as below, this term is included within the couplings (creating an overall "dynamical" term).
+
+
+==== Gauge fields ====
+For the spin-1 fields, first define the field strength tensor
+
+for a given gauge field (here we use A), with gauge coupling constant g. The quantity  f abc is the structure constant of the particular gauge group, defined by the commutator
+
+where ti are the generators of the group. In an Abelian (commutative) group (such as the U(1) we use here), since the generators ta all commute with each other, the structure constants vanish. Of course, this is not the case in general  the standard model includes the non-Abelian SU(2) and SU(3) groups (such groups lead to what is called a YangMills gauge theory).
+We need to introduce three gauge fields corresponding to each of the subgroups SU(3)SU(2)U(1).
+The gluon field tensor will be denoted by , where the index a labels elements of the 8 representation of colour SU(3). The strong coupling constant is conventionally labelled gs (or simply g where there is no ambiguity). The observations leading to the discovery of this part of the Standard Model are discussed in the article in quantum chromodynamics.
+The notation  will be used for the gauge field tensor of SU(2) where a runs over the 3 generators of this group. The coupling can be denoted gw or again simply g. The gauge field will be denoted by .
+The gauge field tensor for the U(1) of weak hypercharge will be denoted by B, the coupling by g, and the gauge field by B.
+The kinetic term can now be written simply as
+
+where the traces are over the SU(2) and SU(3) indices hidden in W and G respectively. The two-index objects are the field strengths derived from W and G the vector fields. There are also two extra hidden parameters: the theta angles for SU(2) and SU(3).
+
+
+=== Coupling terms ===
+The next step is to "couple" the gauge fields to the fermions, allowing for interactions.
+
+
+==== Electroweak sector ====
+
+The electroweak sector interacts with the symmetry group U(1)SU(2)L, where the subscript L indicates coupling only to left-handed fermions.
+
+Where B is the U(1) gauge field; YW is the weak hypercharge (the generator of the U(1) group); W is the three-component SU(2) gauge field; and the components of  are the Pauli matrices (infinitesimal generators of the SU(2) group) whose eigenvalues give the weak isospin. Note that we have to redefine a new U(1) symmetry of weak hypercharge, different from QED, in order to achieve the unification with the weak force. The electric charge Q, third component of weak isospin T3 (also called Tz, I3 or Iz) and weak hypercharge YW are related by
+
+or by the alternate convention Q = T3 + YW. The first convention (used in this article) is equivalent to the earlier Gell-MannNishijima formula. We can then define the conserved current for weak isospin as
+
+and for weak hypercharge as
+
+where  is the electric current and  the third weak isospin current. As explained above, these currents mix to create the physically observed bosons, which also leads to testable relations between the coupling constants.
+To explain in a simpler way, we can see the effect of the electroweak interaction by picking out terms from the Lagrangian. We see that the SU(2) symmetry acts on each (left-handed) fermion doublet contained in , for example
+
+where the particles are understood to be left-handed, and where
+
+This is an interaction corresponding to a "rotation in weak isospin space" or in other words, a transformation between eL and eL via emission of a W boson. The U(1) symmetry, on the other hand, is similar to electromagnetism, but acts on all "weak hypercharged" fermions (both left and right handed) via the neutral Z0, as well as the charged fermions via the photon.
+
+
+==== Quantum chromodynamics sector ====
+
+The quantum chromodynamics (QCD) sector defines the interactions between quarks and gluons, with SU(3) symmetry, generated by Ta. Since leptons do not interact with gluons, they are not affected by this sector. The Dirac Lagrangian of the quarks coupled to the gluon fields is given by
+
+where D and U are the Dirac spinors associated with up- and down-type quarks, and other notations are continued from the previous section.
+
+
+=== Mass terms and the Higgs mechanism ===
+
+
+==== Mass terms ====
+The mass term arising from the Dirac Lagrangian (for any fermion ) is  which is not invariant under the electroweak symmetry. This can be seen by writing  in terms of left and right handed components (skipping the actual calculation):
+
+i.e. contribution from  and  terms do not appear. We see that the mass-generating interaction is achieved by constant flipping of particle chirality. The spin-half particles have no right/left helicity pair with the same SU(2) and SU(3) representation and the same weak hypercharge, so assuming these gauge charges are conserved in the vacuum, none of the spin-half particles could ever swap helicity, and must remain massless. Additionally, we know experimentally that the W and Z bosons are massive, but a boson mass term contains the combination e.g. AA, which clearly depends on the choice of gauge. Therefore, none of the standard model fermions or bosons can "begin" with mass, but must acquire it by some other mechanism.
+
+
+==== The Higgs mechanism ====
+
+The solution to both these problems comes from the Higgs mechanism, which involves scalar fields (the number of which depend on the exact form of Higgs mechanism) which (to give the briefest possible description) are "absorbed" by the massive bosons as degrees of freedom, and which couple to the fermions via Yukawa coupling to create what looks like mass terms.
+In the Standard Model, the Higgs field is a complex scalar of the group SU(2)L:
+
+where the superscripts + and 0 indicate the electric charge (Q) of the components. The weak isospin (YW) of both components is 1.
+The Higgs part of the Lagrangian is
+
+where  > 0 and 2 > 0, so that the mechanism of spontaneous symmetry breaking can be used. There is a parameter here, at first hidden within the shape of the potential, that is very important. In a unitarity gauge one can set + = 0 and make 0 real. Then  is the non-vanishing vacuum expectation value of the Higgs field. v has units of mass, and it is the only parameter in the Standard Model which is not dimensionless. It is also much smaller than the Planck scale; it is approximately equal to the Higgs mass, and sets the scale for the mass of everything else. This is the only real fine-tuning to a small nonzero value in the Standard Model, and it is called the Hierarchy problem. Quadratic terms in W and B arise, which give masses to the W and Z bosons:
+
+The Yukawa interaction terms are
+
+where Gu,d are 33 matrices of Yukawa couplings, with the ij term giving the coupling of the generations i and j.
+
+
+==== Neutrino masses ====
+As previously mentioned, evidence shows neutrinos must have mass. But within the standard model, the right-handed neutrino does not exist, so even with a Yukawa coupling neutrinos remain massless. An obvious solution is to simply add a right-handed neutrino R resulting in a Dirac mass term as usual. This field however must be a sterile neutrino, since being right-handed it experimentally belongs to an isospin singlet (T3 = 0) and also has charge Q = 0, implying YW = 0 (see above) i.e. it does not even participate in the weak interaction. Current experimental status is that evidence for observation of sterile neutrinos is not convincing.
+Another possibility to consider is that the neutrino satisfies the Majorana equation, which at first seems possible due to its zero electric charge. In this case the mass term is
+
+where C denotes a charge conjugated (i.e. anti-) particle, and the terms are consistently all left (or all right) chirality (note that a left-chirality projection of an antiparticle is a right-handed field; care must be taken here due to different notations sometimes used). Here we are essentially flipping between LH neutrinos and RH anti-neutrinos (it is furthermore possible but not necessary that neutrinos are their own antiparticle, so these particles are the same). However for the left-chirality neutrinos, this term changes weak hypercharge by 2 units - not possible with the standard Higgs interation, requiring the Higgs field to be extended to include an extra triplet with weak hypercharge 2 - whereas for right-chirality neutrinos, no Higgs extensions are necessary. For both left and right chirality cases, Majorana terms violate lepton number, but possibly at a level beyond the current sensitivity of experiments to detect such violations.
+It is possible to include both Dirac and Majorana mass terms in the same theory, which (in contrast to the Dirac-mass-only approach) can provide a "natural" explanation for the smallness of the observed neutrino masses, by linking the RH neutrinos to yet-unknown physics around the GUT scale (see seesaw mechanism).
+Since in any case new fields must be postulated to explain the experimental results, neutrinos are an obvious gateway to searching physics beyond the Standard Model.
+
+
+== Detailed Information ==
+This section provides more detail on some aspects, and some reference material.
+
+
+=== Field content in detail ===
+The Standard Model has the following fields. These describe one generation of leptons and quarks, and there are three generations, so there are three copies of each field. By CPT symmetry, there is a set of right-handed fermions with the opposite quantum numbers. The column "representation" indicates under which representations of the gauge groups that each field transforms, in the order (SU(3), SU(2), U(1)). Symbols used are common but not universal; superscript C denotes an antiparticle; and for the U(1) group, the value of the weak hypercharge is listed. Note that there are twice as many left-handed lepton field components as left-handed antilepton field components in each generation, but an equal number of left-handed quark and antiquark fields.
+
+
+=== Fermion content ===
+This table is based in part on data gathered by the Particle Data Group.
+^ a b c These are not ordinary abelian charges, which can be added together, but are labels of group representations of Lie groups.
+^ a b c Mass is really a coupling between a left-handed fermion and a right-handed fermion. For example, the mass of an electron is really a coupling between a left-handed electron and a right-handed electron, which is the antiparticle of a left-handed positron. Also neutrinos show large mixings in their mass coupling, so it's not accurate to talk about neutrino masses in the flavor basis or to suggest a left-handed electron antineutrino.
+^ a b c d e f The Standard Model assumes that neutrinos are massless. However, several contemporary experiments prove that neutrinos oscillate between their flavour states, which could not happen if all were massless. It is straightforward to extend the model to fit these data but there are many possibilities, so the mass eigenstates are still open. See neutrino mass.
+^ a b c d e f W.-M. Yao et al. (Particle Data Group) (2006). "Review of Particle Physics: Neutrino mass, mixing, and flavor change". Journal of Physics G 33: 1. arXiv:astro-ph/0601168. Bibcode:2006JPhG...33....1Y. doi:10.1088/0954-3899/33/1/001. 
+^ a b c d The masses of baryons and hadrons and various cross-sections are the experimentally measured quantities. Since quarks can't be isolated because of QCD confinement, the quantity here is supposed to be the mass of the quark at the renormalization scale of the QCD scale.
+
+
+=== Free parameters ===
+Upon writing the most general Lagrangian, one finds that the dynamics depend on 19 parameters, whose numerical values are established by experiment. The parameters are summarized here (note: with the Higgs mass is at 125 GeV, the Higgs self-coupling strength  ~ 1/8).
+
+
+=== Additional symmetries of the Standard Model ===
+From the theoretical point of view, the Standard Model exhibits four additional global symmetries, not postulated at the outset of its construction, collectively denoted accidental symmetries, which are continuous U(1) global symmetries. The transformations leaving the Lagrangian invariant are:
+
+The first transformation rule is shorthand meaning that all quark fields for all generations must be rotated by an identical phase simultaneously. The fields ML, TL and  are the 2nd (muon) and 3rd (tau) generation analogs of EL and  fields.
+By Noether's theorem, each symmetry above has an associated conservation law: the conservation of baryon number, electron number, muon number, and tau number. Each quark is assigned a baryon number of , while each antiquark is assigned a baryon number of . Conservation of baryon number implies that the number of quarks minus the number of antiquarks is a constant. Within experimental limits, no violation of this conservation law has been found.
+Similarly, each electron and its associated neutrino is assigned an electron number of +1, while the anti-electron and the associated anti-neutrino carry a 1 electron number. Similarly, the muons and their neutrinos are assigned a muon number of +1 and the tau leptons are assigned a tau lepton number of +1. The Standard Model predicts that each of these three numbers should be conserved separately in a manner similar to the way baryon number is conserved. These numbers are collectively known as lepton family numbers (LF).
+In addition to the accidental (but exact) symmetries described above, the Standard Model exhibits several approximate symmetries. These are the "SU(2) custodial symmetry" and the "SU(2) or SU(3) quark flavor symmetry."
+
+
+=== The U(1) symmetry ===
+For the leptons, the gauge group can be written SU(2)lU(1)LU(1)R. The two U(1) factors can be combined into U(1)YU(1)l where l is the lepton number. Gauging of the lepton number is ruled out by experiment, leaving only the possible gauge group SU(2)LU(1)Y. A similar argument in the quark sector also gives the same result for the electroweak theory.
+
+
+=== The charged and neutral current couplings and Fermi theory ===
+The charged currents  are
+
+These charged currents are precisely those that entered the Fermi theory of beta decay. The action contains the charge current piece
+
+For energy much less than the mass of the W-boson, the effective theory becomes the currentcurrent interaction of the Fermi theory.
+However, gauge invariance now requires that the component  of the gauge field also be coupled to a current that lies in the triplet of SU(2). However, this mixes with the U(1), and another current in that sector is needed. These currents must be uncharged in order to conserve charge. So we require the neutral currents
+
+The neutral current piece in the Lagrangian is then
+
+
+== See also ==
+Overview of Standard Model of particle physics
+Fundamental interaction
+Noncommutative standard model
+Open questions: CP violation, Neutrino masses, Quark matter
+Physics beyond the Standard Model
+Strong interactions: Flavour, Quantum chromodynamics, Quark model
+Weak interactions: Electroweak interaction, Fermi's interaction
+Weinberg angle
+Symmetry in quantum mechanics
+
+
+== References and external links ==
+
+An introduction to quantum field theory, by M.E. Peskin and D.V. Schroeder (HarperCollins, 1995) ISBN 0-201-50397-2.
+Gauge theory of elementary particle physics, by T.P. Cheng and L.F. Li (Oxford University Press, 1982) ISBN 0-19-851961-3.
+Standard Model Lagrangian with explicit Higgs terms (T.D. Gutierrez, ca 1999) (PDF, PostScript, and LaTeX version)
+The quantum theory of fields (vol 2), by S. Weinberg (Cambridge University Press, 1996) ISBN 0-521-55002-5.
+Quantum Field Theory in a Nutshell (Second Edition), by A. Zee (Princeton University Press, 2010) ISBN 978-1-4008-3532-4.
+An Introduction to Particle Physics and the Standard Model, by R. Mann (CRC Press, 2010) ISBN 978-1420082982

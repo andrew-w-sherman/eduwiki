@@ -81,7 +81,7 @@ def make_quiz(topic):
 def make_question(topic, num):
     # a whole bunch of ugly code to randomize the answers but keep
     # track of which one is correct
-    answers_prerand = topic['distractors']
+    answers_prerand = [distractor['snippet'] for distractor in topic['distractors']]
     description = topic['description']
     answers_prerand.insert(0, description)
     answers = []
@@ -116,7 +116,7 @@ def quiz_correctness(request):
 # extra code to fix issues with the way json.loads processes this
 
 def recurhook(d):
-    if d['children']:
+    if d.get('children', False):
         # d['children'] = json.loads(d['children'], recurhook)
         children = []
         for child in d['children']:

@@ -8,20 +8,19 @@ import json
 import sys
 import unicodedata
 
-
 # takes a search term and, optionally, a depth and branch factor, and returns a
 # JSON tree representing the term's article, with its prereqs and quiz items as
 # well as those of the prereqs, and of their prereqs, etc.
 def query(search_term, depth=1, children=3):
     # set a max depth and branching factor as a failsafe
-    if depth > 6:
-        depth = 6
-    if children > 6:
-        children = 6
+    if depth > 3:
+        depth = 3
+    if children > 10:
+        children = 10
 
     # get the topic and the names of its prereq links
     main_topic = WikiEducate(search_term)
-    prereqs = main_topic.good_wikilinks(children)
+    prereqs = [getpage(prereq) for prereq in main_topic.wikilinks(children)]
     topic_name = main_topic.page.title
 
     # create a JSON tree which will be recursively built
@@ -31,7 +30,7 @@ def query(search_term, depth=1, children=3):
     # note: I'm referring to the actual string of text as the distractor
     topic_text = main_topic.plainTextSummary(1)
     description = main_topic.returnWhatIs()
-    distractors = [prereq.returnWhatIs() for prereq in prereqs]
+    distractors = [{"snippet": prereq.returnWhatIs(), "pagetitle": prereq.page.title} for prereq in prereqs]
 
     # run for children if depth left
     if depth != 0:
@@ -104,12 +103,12 @@ class WikiEducate:
         for link_page in link_pages:
             if len(good_pages) >= num: break
             #simple filter, needs fixing
-            if link_page.topic in self.mutuallinks and link_page.back < 400:
+            if link_page.topic in self.mutuallinks:
                 good_pages.append(link_page)
         #fill out the rest if not enough
         for link_page in link_pages:
             if len(good_pages) >= num: break
-            if link_page.topic not in self.mutuallinks or not link_page.back < 400:
+            if link_page.topic not in self.mutuallinks:
                 good_pages.append(link_page)
         return good_pages
         
