@@ -20,14 +20,27 @@ class WikiPage(models.Model):
     
     title = models.CharField(verbose_name="title of the page", max_length=255, primary_key=True)
     page_id = models.IntegerField(verbose_name="id of the page")
-    url = models.URLField(verbose_name="the url of the page")
     mod_date = models.DateTimeField(verbose_name="last modified date", auto_now=True)
-    links = models.ManyToManyField("self", through="Link", symmetrical=False, related_name="backlinks")
+    links = models.ManyToManyField("self", related_name="backlinks")
     wikitext = models.CharField(verbose_name="page wikitext", max_length=10000)
-    description = models.CharField(verbose_name="a quick description for the page", max_length = 500)
+    top_section = models.CharField(verbose_name="string to draw snippets from", max_length = 500)
     disambiguation = models.BooleanField(verbose_name="whether or not the page is a disambiguation")
+    valid = models.BooleanField(verbose_name='whether or not the data has been fetched')
 
-class Link(models.Model):
+"""class PagePlacehold(models.Model):
+    class Meta:
+        verbose_name = _('PagePlacehold')
+        verbose_name_plural = _('PagePlaceholds')
+
+    def __unicode__(self):
+        return raw_title
+    
+    raw_title = models.CharField(verbose_name="title of the page", max_length=255, primary_key=True)
+    mod_date = models.DateTimeField(verbose_name="last modified date", auto_now=True)
+    on_page = models.ForeignKey(WikiPage, related_name="tenative_links")"""
+    
+
+"""class Link(models.Model):
     class Meta:
         verbose_name = ('Link')
         verbose_name_plural = ('Links')
@@ -37,7 +50,7 @@ class Link(models.Model):
     
     source = models.ForeignKey(WikiPage, related_name="source")
     target = models.ForeignKey(WikiPage, related_name="target")
-    position = models.IntegerField(verbose_name="relative position on the page", primary_key=True)
+    position = models.IntegerField(verbose_name="relative position on the page", primary_key=True)"""
 
 class Review(models.Model):
     class Meta:

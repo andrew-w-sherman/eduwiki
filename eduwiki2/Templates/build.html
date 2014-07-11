@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html ng-app="build">
+<head>
+    <title>
+        EduWiki Build
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="static/bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/main.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular.min.js"></script>
+    <script src="static/js/build.js"></script>
+</head>
+<body ng-controller="BuildController">
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">EduWiki</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/learn">Learn</a></li>
+                    <li><a href="/build">Build</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="col-sm-3 pull-left well" id="treeview" ng-if="showTree">
+            <span ng-repeat="node in flatTree">
+                <span ng-repeat="item in getNum(node.level)">&nbsp;</span>
+                <span ng-if="node.active"><a ng-click="">{{node.name}}</a></span>
+                <span ng-if="!node.active">{{ node.name }}</span>
+            </span>
+        </div>
+
+        <div class="container" id="registerForm" ng-if="showReg">
+            <div class="panel panel-default">
+            <div class="panel-body">
+            <div class="col-sm-offset-2 col-sm-8">
+                <form ng-submit="regSubmit()">
+                    <h2>Please give us some information about yourself:</h2>
+                    <br>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input ng-model="regData.name" id="name" type="text" class="form-control" placeholder="Joe Schmoe">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input ng-model="regData.email" id="email" type="email" class="form-control" placeholder="joe@schmoe.net">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="topic">Topic:</label>
+                            <input ng-model="regData.topic" id="topic" type="text" class="form-control" placeholder="Where would you like to start?">
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                </form>
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="container col-sm-9 pull-right" id="prereqChooser" ng-if="showReqs">
+            <button class="btn btn-primary">Prereq 1</button>
+            <button class="btn btn-primary">Prereq 2</button>
+            <button class="btn btn-primary">Prereq 3</button>
+        </div>
+
+        <div class="container col-sm-9 pull-right" id="buildForm" ng-if="showReview">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="static/bs3/js/jquery-2.1.1.min.js"></script>
+    <script src="static/bs3/js/bootstrap.min.js"></script>
+</body>
+</html>
