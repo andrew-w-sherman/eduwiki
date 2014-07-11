@@ -12,7 +12,15 @@ buildApp.controller('BuildController', function($scope, $http){
     $scope.showReview = false;
     $scope.reviewDisabled = false;
     $scope.regData = {};
+    $scope.regTopic = {};
     $scope.revData = {};
+
+    // debug review
+    //$scope.showReqs = false;
+    //$scope.showTree = true;
+    //$scope.showReg = false;
+    //$scope.showReview = true;
+
 
     $scope.onRegister = function() {
 
@@ -24,11 +32,7 @@ buildApp.controller('BuildController', function($scope, $http){
 
     $scope.regSubmit = function() {
         //submit the post request for the registration, get back user info
-        $http({
-            method  :   'POST',
-            url     :   '/register',
-            data    :   $.param($scope.regData),
-        })
+        $http.post('/build/register', $scope.regData)
             .success(function(data){
                 if(!data.success){
                     //bind AJAX errors to scope and process them
@@ -38,11 +42,8 @@ buildApp.controller('BuildController', function($scope, $http){
                 else{
                     $scope.user = data.user; //or something, depending on how user stuff is done
                     //if it works, get the review data for the root topic
-                    $http({
-                        method  :   'GET',
-                        url     :   '/'+$scope.regData.topic+'/review',
-                        data    :   $.param($scope.user),
-                    })
+                    $http.get('/build/'+encodeURI($scope.regTopic.topic)+'/review',
+                    {params: {user: encodeURI($scope.user)}})  //probably gonna need to use tokens instead
                     .success(function(data){
                         if(!data.success){
                             if(data.errors.disambig){
@@ -70,46 +71,42 @@ buildApp.controller('BuildController', function($scope, $http){
 
     $scope.revSubmit = function(){
         //post request for the review data
-        $http({
-            method: 'POST',
-            url: '/'+$scope.topic.name+'/review',
-            data: $.param($scope.revData),
-        })
-        .success(function(data){
-            if(!data.success){
-                $scope.errors = data.errors;
-                //error display
-            }
-            else{
-                //once submitted, get prerequisites
-                $http({
-                    method: 'GET',
-                    url: '/'+$scope.topic.name+'/prerequisites',
-                    //maybe submit user in the future?
-                })
-                .success(function(data){
-                    if(!data.success){
-                        $scope.errors = data.errors;
-                        //error display
-                    }
-                    else{
-                        //show the prerequisite buttons and disable the form
-                        $scope.reqs = data.reqs;
-                        $scope.topic.children = data.reqs;
-                        $scope.showReview = false;
-                        $scope.reviewDisabled = true;
-                        $scope.showReqs = true;
-                    }
-                });
-            }
-        });
+        $http.post('/build/'+$scope.topic.name+'/review', $scope.revData)
+            .success(function(data){
+                if(!data.success){
+                    $scope.errors = data.errors;
+                    //error display
+                }
+                else{
+                    //once submitted, get prerequisites
+                    $http({
+                        method: 'GET',
+                        url: '/build/'+$scope.topic.name+'/prerequisites',
+                        //maybe submit user in the future?
+                    })
+                    .success(function(data){
+                        if(!data.success){
+                            $scope.errors = data.errors;
+                            //error display
+                        }
+                        else{
+                            //show the prerequisite buttons and disable the form
+                            $scope.reqs = data.reqs;
+                            $scope.topic.children = data.reqs;
+                            $scope.showReview = false;
+                            $scope.reviewDisabled = true;
+                            $scope.showReqs = true;
+                        }
+                    });
+                }
+            });
     };
 
     $scope.reqSubmit = function(choice){ //see below about the choice thing but it's a decent placeholder
         $http({
             method: 'GET',
-            url: '/'+$scope.reqs.choice+'/review', //this choice thing is weird idk
-            data: $.param($scope.revData),
+            url: '/build/'+$scope.reqs.choice+'/review', //this choice thing is weird idk
+            data: $scope.revData,
         })
         .success(function(data){
             if(!data.success){

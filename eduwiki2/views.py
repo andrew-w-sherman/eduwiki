@@ -28,12 +28,19 @@ class BuildViews:
     """note: this will need to return stuff"""
     @view_config(route_name='register', request_method='POST', renderer='json')
     def register(self):
-        json = self.request.json_body
+        print(self.request.json_body)
+        obj = self.request.json_body
+        return {'success': True, 'user': "Some sort of user data"}
 
     # api get, gets the review form for a given topic
     @view_config(route_name='review', request_method='GET', renderer='json')
     def get_review(self):
+        print("get review")
         topic = unquote(self.request.matchdict['topic'])
+        user = unquote(self.request.params["user"])
+        print(user)
+        print(topic)
+        return{'success': True, 'name': "Physics", 'review': {'stuff': "things"}}
 
     # api post, posts a review response for a given topic
     @view_config(route_name='review', request_method='POST', renderer='json')
