@@ -15,6 +15,7 @@
 </head>
 <body ng-controller="BuildController">
 
+    <!-- NAVBAR -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -39,82 +40,116 @@
         </div>
     </nav>
 
-    <div class="container">
 
-        <div class="col-sm-3 pull-left well" id="treeview" ng-if="showTree">
-            <span ng-repeat="node in flattenTree(tree, 0)">
-                <span ng-repeat="item in getNum(node.level)">&nbsp;</span>
-                <span ng-if="node.active"><a ng-click="">{{node.name}}</a></span>
-                <span ng-if="!node.active">{{ node.name }}</span>
-            </span>
-        </div>
 
-        <div class="container" id="registerForm" ng-if="showReg">
-            <div class="panel panel-default">
-            <div class="panel-body">
-            <div class="col-sm-offset-2 col-sm-8">
-                <form ng-submit="regSubmit()">
-                    <h2>Please give us some information about yourself:</h2>
-                    <br>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input ng-model="regData.name" id="name" type="text" class="form-control" placeholder="Joe Schmoe">
-                        </div>
+    <!-- REGISTER VIEW -->
+    <div class="container" id="registerForm" ng-if="showReg">
+        <div class="panel panel-default">
+        <div class="panel-body">
+        <div class="col-sm-offset-2 col-sm-8">
+            <form ng-submit="regSubmit()">
+                <h2>Please give us some information about yourself:</h2>
+                <br>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input ng-model="regData.name" id="name" type="text" class="form-control" placeholder="Joe Schmoe">
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input ng-model="regData.email" id="email" type="email" class="form-control" placeholder="joe@schmoe.net">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="topic">Topic:</label>
-                            <input ng-model="regTopic.topic" id="topic" type="text" class="form-control" placeholder="Where would you like to start?">
-                        </div>
-                    </div>
-                    <br>
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
-                </form>
-            </div>
-            </div>
-            </div>
-        </div>
-
-        <div class="container col-sm-9 pull-right" id="prereqChooser" ng-if="showReqs">
-            <button class="btn btn-primary">Prereq 1</button>
-            <button class="btn btn-primary">Prereq 2</button>
-            <button class="btn btn-primary">Prereq 3</button>
-        </div>
-
-        <div class="container col-sm-9 pull-right" id="buildForm" ng-if="showReview">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2>{{ review.title }} is:</h2>
                 </div>
-                <table class="table">
-                    <tr class="success">
-                        <td>Correct answer: {{ topic.name }}</td><td/>
-                    </tr>
-                    <tr class="info">
-                        <td><h3>Distractor answers: (check the good ones)</h3></td><td/>
-                    </tr>
-                    <tr ng-repeat="distractor in review.distractors">
-                        <td><input type="checkbox">&nbsp;&nbsp;{{ distractor.snippet }} &nbsp;<small>taken from the page on: {{ distractor.pagetitle }}</small></td>
-                    </tr>
-                    <tr>
-                        <td><textarea class="form-control" rows="5" placeholder="Add your own distractor" style="width: 100%"></textarea></td><td/>
-                    </tr>
-                    <tr class="info">
-                        <td><h4>Would you consider this a prerequisite for learning about {{ topic.title }}?</h4></td>
-                        <td><input type="checkbox" name="prereq" value="{{prereq.title}}">Yes</td>
-                    </tr>
-                </table>
-            </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input ng-model="regData.email" id="email" type="email" class="form-control" placeholder="joe@schmoe.net">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="topic">Topic:</label>
+                        <input ng-model="regTopic.topic" id="topic" type="text" class="form-control" placeholder="Where would you like to start?">
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+            </form>
+        </div>
+        </div>
+        </div>
+    </div>
+
+
+    <!-- MAIN VIEWS -->
+    <div class="container" ng-if="!showReg">
+
+        <!-- TREE VIEW -->
+        <div class="col-sm-3 well" id="treeview">
+            <script type="text/ng-template"  id="tree_item_renderer.html">
+                <button class="btn btn-link" ng-click="showReview(node)" ng-disabled="node.done">{{ node.name }}</button>
+                <ul class="tree">
+                    <li ng-repeat="node in node.children" ng-include="'tree_item_renderer.html'"></li>
+                </ul>
+            </script>
+            <ul class="tree">
+                <li>
+                    <button class="btn btn-link" ng-click="showReview(tree)" ng-disabled="tree.done">{{ tree.name }}</button>
+                    <ul class="tree">
+                        <li ng-repeat="node in tree.children" ng-include="'tree_item_renderer.html'"></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
+        <div class="col-sm-9">
+            <div class="container-fluid">
+
+                <!-- PREREQ VIEW -->
+                <div class="row" ng-if="showReqs">
+                    <h2>Choose a prerequisite for this topic to continue, or choose one from the tree menu.</h2>
+                    <div class="col-md-4" id="prereq" ng-repeat="req in topic.children">
+                        <button class="btn btn-primary btn-block btn-lg" ng-click="showReview(req)">{{ req.name }}</button>
+                    </div>
+                </div>
+
+                <!-- BUILD VIEW -->
+                <div class="row" ng-if="showReview">
+                <div class="col-xs-12">
+                    <div class="panel panel-default" ng-class="reviewDisabled">
+                        <div class="panel-heading">
+                            <h2>{{ topic.name }} is:</h2>
+                        </div>
+                        <table class="table">
+                            <tr class="success">
+                                <td>Correct answer: {{ topic.description }}</td>
+                            </tr>
+                            <tr class="info">
+                                <td><h3>Distractor answers: (check the good ones)</h3></td>
+                            </tr>
+                            <tr ng-repeat="distractor in topic.distractors">
+                                <td><input ng-model="distractor.isGood" type="radio" ng-value="true" ng-disabled="reviewDisabled">Good
+                                <input ng-model="distractor.isGood" type="radio" ng-value="false" ng-disabled="reviewDisabled">Bad
+                                &nbsp;&nbsp;{{ distractor.snippet }} &nbsp;<small>taken from the page on: {{ distractor.pagetitle }}</small></td>
+                            </tr>
+                            <tr>
+                                <td><textarea ng-model="revData.addDist" class="form-control col-xs-12" rows="5" placeholder="Add your own distractor" style="resize:vertical" ng-disabled="reviewDisabled"></textarea></td>
+                            </tr>
+                            <tr class="info" ng-if="topic.parent">
+                                <td><h4>Would you consider this a prerequisite for learning about {{ topic.parent }}?</h4>
+                                    <input ng-model="formData.isPrereq" type="radio" ng-value="true" ng-disabled="reviewDisabled">Yes
+                                    <input ng-model="formData.isPrereq" type="radio" ng-value="false" ng-disabled="reviewDisabled">No</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-primary pull-right" type="submit" ng-click="revSubmit()" ng-disabled="reviewDisabled">Submit this review</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
+
 
     <script src="static/bs3/js/jquery-2.1.1.min.js"></script>
     <script src="static/bs3/js/bootstrap.min.js"></script>
