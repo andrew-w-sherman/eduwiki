@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VTheory of relativity
+p3
+aVQuantum field theory
+p4
+aVClassical electromagnetism
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VTheory of relativity
+p10
+sS'snippet'
+p11
+Vis about the scientific concept .
+p12
+sa(dp13
+g9
+VQuantum field theory
+p14
+sg11
+Vis a theoretical framework for constructing quantum mechanical models of subatomic particles in particle physics and quasiparticles in condensed matter physics .
+p15
+sa(dp16
+g9
+VClassical electromagnetism
+p17
+sg11
+Vis a branch of theoretical physics that studies the interactions between electric charges and currents using an extension of the classical Newtonian model .
+p18
+sasS'name'
+p19
+VQuantum electrodynamics
+p20
+sS'description'
+p21
+Vis the relativistic quantum field theory of electrodynamics .
+p22
+s.

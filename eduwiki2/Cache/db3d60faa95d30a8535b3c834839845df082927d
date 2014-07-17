@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VUnits of information
+p3
+aVInformation
+p4
+aVComputing
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VUnits of information
+p10
+sS'snippet'
+p11
+Vis the capacity of some standard data storage system or communication channel , used to measure the capacities of other systems and channels .
+p12
+sa(dp13
+g9
+VInformation
+p14
+sg11
+Vis any kind of event that affects the state of a dynamic system that can interpret the information .
+p15
+sa(dp16
+g9
+VComputing
+p17
+sg11
+VComputing is any goal-oriented activity requiring , benefiting from , or creating algorithmic processes - e.g. through computers .
+p18
+sasS'name'
+p19
+VBit
+p20
+sS'description'
+p21
+Vis the basic unit of information in computing and digital communications .
+p22
+s.

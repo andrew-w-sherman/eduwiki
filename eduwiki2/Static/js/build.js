@@ -20,7 +20,7 @@ buildApp.controller('BuildController', function($scope, $http){
 
     $scope.regSubmit = function() {
         //submit the post request for the registration, get back user info
-        $http.post('/build/register', $scope.regData)
+        $http.post('/build/register', $scope.regData) //needs an extra bool for if disambig prone
             .success(function(data){
                 if(!data.success){
                     //bind AJAX errors to scope and process them
@@ -48,7 +48,6 @@ buildApp.controller('BuildController', function($scope, $http){
                             //on success, bind data to scope and show review pane
                             $scope.tree = {name: data.name, description: data.description, distractors: data.distractors, active: true};
                             $scope.topic = $scope.tree;
-                            $scope.review = data.review;
                             $scope.showReg = false;
                             $scope.showReview = true;
                         }
@@ -59,6 +58,7 @@ buildApp.controller('BuildController', function($scope, $http){
 
     $scope.revSubmit = function(){
         //post request for the review data
+        $scope.revData.distractors = [];
         for(var i = 0; i < $scope.topic.distractors.length; i++){
             $scope.revData.distractors.push({name: $scope.topic.distractors[i].pagetitle, isGood: $scope.topic.distractors[i].isGood});
         }

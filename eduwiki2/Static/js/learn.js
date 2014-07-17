@@ -3,7 +3,7 @@ var learnApp = angular.module('learn', []);
 learnApp.controller('LearnController', function($scope, $http){
     $scope.main_topic = "";
     $scope.current_name = "";
-    $scope.definition = {};
+    $scope.description = {};
     $scope.distractors = [];
     $scope.answers = [];
     $scope.testTopics = [];
@@ -26,22 +26,22 @@ learnApp.controller('LearnController', function($scope, $http){
                     //need disambiguation handling
                 }
                 else{
-                    $scope.main_topic = data.current_name;
+                    $scope.main_topic = data.name;
                     $scope.testTopics = data.prereqs;
-                    getQuiz();
+                    $scope.getQuiz();
                 }
             });
     };
 
     $scope.submitQuiz = function(){
-        if(quizData.correct != "correct"){
+        if($scope.quizData.correct != "correct"){
             $scope.testResults.push({name: $scope.current_name, correct: true});
         }
-        getQuiz();
+        $scope.getQuiz();
     };
 
     $scope.getQuiz = function(){
-        if(testTopics.length !== 0){
+        if($scope.testTopics.length !== 0){
             var term = $scope.testTopics.shift();
             $http.get('/learn/'+encodeURI(term)+'/quiz')
                 .success(function(data){
@@ -50,16 +50,16 @@ learnApp.controller('LearnController', function($scope, $http){
                     }
                     else{
                         $scope.current_name = data.name;
-                        $scope.definition.snippet = data.definition;
+                        $scope.description.snippet = data.description;
                         $scope.distractors = data.distractors;
-                        for(var i = 0; i < distractors.length; i++){
-                            distractors[i].correct = "incorrect";
-                            distractors[i].rand = Math.random();
+                        for(var i = 0; i < $scope.distractors.length; i++){
+                            $scope.distractors[i].correct = $scope.distractors[i].pagetitle;
+                            $scope.distractors[i].rand = Math.floor(Math.random() * 1000);
                         }
-                        $scope.definition.correct = "correct";
-                        $scope.definition.rand = Math.random();
+                        $scope.description.correct = "correct";
+                        $scope.description.rand = Math.floor(Math.random() * 1000);
                         $scope.answers = $scope.distractors;
-                        $scope.answers[$scope.answers.length] = $scope.definition;
+                        $scope.answers[$scope.answers.length] = $scope.description;
                         $scope.showIntro = false;
                         $scope.showInfo = false;
                         $scope.showQuiz = true;
@@ -72,12 +72,12 @@ learnApp.controller('LearnController', function($scope, $http){
     };
 
     $scope.getInfo = function(){
-        for(var i = 0; i < testResults.length; i++){
-            if(testResults[i].correct){
-                $scope.infoRequest(testResults[i].name);
+        for(var i = 0; i < $scope.testResults.length; i++){
+            if($scope.testResults[i].correct){
+                $scope.infoRequest($scope.testResults[i].name);
             }
         }
-        $http.get('/learn/'+encodeURI(current_name)+'/info')
+        $http.get('/learn/'+encodeURI($scope.current_name)+'/info')
             .success(function(data){
                 if(!data.success){
                     $scope.errors = data.errors;

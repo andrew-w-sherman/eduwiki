@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VQuantum superposition
+p3
+aVQuantum state
+p4
+aVHilbert space
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VQuantum superposition
+p10
+sS'snippet'
+p11
+Vis a fundamental principle of quantum mechanics that holds that a physical system\u2014such as an electron\u2014exists partly in all its particular theoretically possible states ( or , configuration of its properties ) simultaneously ; but when measured or observed , it gives a result corresponding to only one of the possible configurations ( as described in interpretation of quantum mechanics ) .
+p12
+sa(dp13
+g9
+VQuantum state
+p14
+sg11
+Vis a generalization of our more usual three-dimensional space .
+p15
+sa(dp16
+g9
+VHilbert space
+p17
+sg11
+Vis an abstract vector space possessing the structure of an inner product that allows length and angle to be measured .
+p18
+sasS'name'
+p19
+VTwo-state quantum system
+p20
+sS'description'
+p21
+Vis a system which can exist in any quantum superposition of two independent ( physically distinguishable ) quantum states .
+p22
+s.

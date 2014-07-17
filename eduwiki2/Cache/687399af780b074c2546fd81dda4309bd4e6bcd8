@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VMathematics
+p3
+aVBinary relation
+p4
+aVSet (mathematics)
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VMathematics
+p10
+sS'snippet'
+p11
+Vis the study of topics such as quantity ( numbers ) , [ 2 ] structure , [ 3 ] space , [ 2 ] and change .
+p12
+sa(dp13
+g9
+VBinary relation
+p14
+sg11
+Vis a collection of ordered pairs of elements of A. In other words , it is a subset of the Cartesian product A2 = A × A. More generally , a binary relation between two sets A and B is a subset of A × B. The terms correspondence , dyadic relation and 2-place relation are synonyms for binary relation .
+p15
+sa(dp16
+g9
+VSet (mathematics)
+p17
+sg11
+Vis a collection of distinct objects , considered as an object in its own right .
+p18
+sasS'name'
+p19
+VFunction (mathematics)
+p20
+sS'description'
+p21
+Vis a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output .
+p22
+s.

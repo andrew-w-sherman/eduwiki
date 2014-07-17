@@ -23,6 +23,10 @@ if __name__ == '__main__':
     config.add_route('info', '/learn/{topic}/info')
     config.add_route('about', '/about')
     config.add_route('contact', '/contact')
+    config.add_route('studies', '/studies')
+    config.add_route('prereqs', '/studies/prereq')
+    config.add_route('prereqstart', '/studies/prereq/start')
+    config.add_route('next_req', '/studies/prereq/{topic}')
     config.add_static_view(name='static', path='static')
 
     config.scan('views')                            # scan for views

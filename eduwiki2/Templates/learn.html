@@ -50,8 +50,8 @@
     <div class="container" ng-if="showIntro">
         <div class="jumbotron">
             <div class="row">
-                <div class="col-md-7">
-                    <h2>Welcome to EduWiki. What would you like to learn?</h2>
+                <div class="col-md-10">
+                    <h1>Welcome to EduWiki. What would you like to learn?</h1>
                 </div>
             </div>
             <div class="row">
@@ -91,23 +91,33 @@
 
         <!-- QUIZ PANEL -->
         <div class="row" ng-if="showQuiz">
-            <p class="lead">You're learning about {{ main_topic }}. Let's see what you know about {{ current_name }}.</p>
-            <form>
-            <table>
-                <tr>
-                    <td>Is it:</td>
-                    <td></td>
-                </tr>
-                <tr ng-repeat="answer in answers | orderBy:rand">
-                    <td><input ng-model="quizData.correct" value="{{ answer.correct }}" type="radio"></td>
-                    <td>{{ answer.snippet }}</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><button ng-click="submitQuiz()" class="btn btn-primary">Continue</button></td>
-                </tr>
-            </table>
-            </form>
+            <div class="col-md-10 col-md-offset-1">
+                <form>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>You're learning about {{ main_topic }}. Let's see what you know about {{ current_name }}.</h3>
+                    </div>
+                    <table class="table">
+                        <tr class='info'>
+                            <td></td>
+                            <td>Is it:</td>
+                        </tr>
+                        <tr ng-repeat="answer in answers | orderBy:rand">
+                            <td><input ng-model="quizData.correct" value="{{ answer.correct }}" type="radio"></td>
+                            <td>{{ answer.snippet }}</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" ng-model="quizData.correct" value="dontknow"></td>
+                            <td>I don't know</td>
+                        </tr>
+                        <tr class="success">
+                            <td></td>
+                            <td><button ng-click="submitQuiz()" class="btn btn-success pull-right btn-lg">Continue</button></td>
+                        </tr>
+                    </table>
+                </div>
+                </form>
+            </div>
         </div>
     </div>
 

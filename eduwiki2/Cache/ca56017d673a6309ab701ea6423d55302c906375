@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VQuantum information
+p3
+aVBit
+p4
+aVTwo-state quantum system
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VQuantum information
+p10
+sS'snippet'
+p11
+Vis the basic entity that is studied in the burgeoning field of quantum information theory , and manipulated using the engineering techniques of quantum information processing .
+p12
+sa(dp13
+g9
+VBit
+p14
+sg11
+Vis the basic unit of information in computing and digital communications .
+p15
+sa(dp16
+g9
+VTwo-state quantum system
+p17
+sg11
+Vis a system which can exist in any quantum superposition of two independent ( physically distinguishable ) quantum states .
+p18
+sasS'name'
+p19
+VQubit
+p20
+sS'description'
+p21
+Vis a unit of quantum information\u2014the quantum analogue of the classical bit .
+p22
+s.

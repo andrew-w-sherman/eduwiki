@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VFunction (mathematics)
+p3
+aVManifold
+p4
+aVMathematical model
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VFunction (mathematics)
+p10
+sS'snippet'
+p11
+Vis a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output .
+p12
+sa(dp13
+g9
+VManifold
+p14
+sg11
+Vis a topological space that resembles Euclidean space near each point .
+p15
+sa(dp16
+g9
+VMathematical model
+p17
+sg11
+Vis the reverse of the sense explained in this article .
+p18
+sasS'name'
+p19
+VDynamical system
+p20
+sS'description'
+p21
+Vis a concept in mathematics where a fixed rule describes the time dependence of a point in a geometrical space .
+p22
+s.

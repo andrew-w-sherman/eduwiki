@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VDynamical system
+p3
+aVFunction (mathematics)
+p4
+aVEuler\u2013Lagrange equation
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VDynamical system
+p10
+sS'snippet'
+p11
+Vis a concept in mathematics where a fixed rule describes the time dependence of a point in a geometrical space .
+p12
+sa(dp13
+g9
+VFunction (mathematics)
+p14
+sg11
+Vis a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output .
+p15
+sa(dp16
+g9
+VEuler\u2013Lagrange equation
+p17
+sg11
+Vis a differential equation whose solutions are the functions for which a given functional is stationary .
+p18
+sasS'name'
+p19
+VLagrangian
+p20
+sS'description'
+p21
+Vis a mathematical function that summarizes the dynamics of the system .
+p22
+s.

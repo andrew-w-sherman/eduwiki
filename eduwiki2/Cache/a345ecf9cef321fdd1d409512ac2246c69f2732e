@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VAnglo-Irish people
+p3
+aVAstronomer
+p4
+aVMathematician
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VAnglo-Irish people
+p10
+sS'snippet'
+p11
+Vwas a term used primarily in the 19th and early 20th centuries to identify a privileged social class in Ireland , whose members were the descendants and successors of the Protestant Ascendancy , [ 1 ] mostly belonging to the Church of Ireland , which was the established church of Ireland until 1871 , or to a lesser extent one of the English dissenting churches , such as the Methodist church .
+p12
+sa(dp13
+g9
+VAstronomer
+p14
+sg11
+Vis a scientist who studies celestial bodies such as black holes , moons , planets , stars , nebulae , and galaxies , as well as Gamma-ray bursts and cosmic microwave background radiation .
+p15
+sa(dp16
+g9
+VMathematician
+p17
+sg11
+Vis a person with an extensive knowledge of mathematics who uses this knowledge in their work , typically to solve mathematical problems .
+p18
+sasS'name'
+p19
+VWilliam Rowan Hamilton
+p20
+sS'description'
+p21
+Vwas an Anglo-Irish physicist , astronomer , and mathematician , who made important contributions to classical mechanics , optics , and algebra .
+p22
+s.

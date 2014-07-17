@@ -1,0 +1,10 @@
+(dp0
+S'text'
+p1
+VIn quantum mechanics, a two-state system (also known as a two-level system) is a system which can exist in any quantum superposition of two independent (physically distinguishable) quantum states. The Hilbert space describing such a system is two dimensional. Therefore, a complete basis spanning the space will consist of two independent states.\u000a\u000aTwo-state systems are the simplest quantum systems that can exist, since the dynamics of a one-state system is trivial (i.e. there is no other state the system can exist in). The mathematical framework required for the analysis of two-state systems is that of linear differential equations and linear algebra of two-dimensional spaces. As a result, the dynamics of a two-state system can be solved analytically without any approximation.\u000a\u000aA very well known example of a two-state system is the spin of a spin-1/2 particle such as an electron, whose spin can have values +\u0127/2 or \u2212\u0127/2, where \u0127 is the reduced Planck constant. Another example, frequently studied in atomic physics, is the transition of an atom to or from an excited state; here the two-state formalism is used to quantitatively explain stimulated and spontaneous emission of photons from excited atoms.
+p2
+sS'name'
+p3
+VTwo-state quantum system
+p4
+s.
