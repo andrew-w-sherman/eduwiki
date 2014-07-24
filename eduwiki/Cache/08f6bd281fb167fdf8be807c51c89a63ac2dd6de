@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VBehavior
+p3
+aVSkill
+p4
+aVValue (personal and cultural)
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VBehavior
+p10
+sS'snippet'
+p11
+Vis the range of actions and mannerisms made by organisms , systems , or artificial entities in conjunction with themselves or their environment , which includes the other systems or organisms around as well as the ( inanimate ) physical environment .
+p12
+sa(dp13
+g9
+VSkill
+p14
+sg11
+Vis the learned ability to carry out a task with pre-determined results often within a given amount of time , energy , or both .
+p15
+sa(dp16
+g9
+VValue (personal and cultural)
+p17
+sg11
+Vcan be the basis for ethical action .
+p18
+sasS'name'
+p19
+VLearning
+p20
+sS'description'
+p21
+Vis the act of acquiring new , or modifying and reinforcing , existing knowledge , behaviors , skills , values , or preferences and may involve synthesizing different types of information .
+p22
+s.

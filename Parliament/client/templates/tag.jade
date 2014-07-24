@@ -1,0 +1,25 @@
+template(name='tag')
+  .container
+    .row
+      .panel.panel-default
+        .panel-heading
+          h2 Queries tagged #{tag}:
+        table.table
+          thead
+            tr
+              th Query
+              th Topic
+              th Tags
+          tbody
+            each queries
+              tr
+                td #{query}
+                td #{topic}
+                td.tagcol
+                  +tagbox
+
+template(name='tagbox')
+  .tagbox
+    each tags
+      a(href="{{pathFor 'tag' tag=this}}")
+        button.btn.btn-default.btn-sm #{this}

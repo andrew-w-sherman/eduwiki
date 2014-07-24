@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html ng-app="prereq">
+<head>
+    <title>Prereq Study</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="static/bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/prereq.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular.min.js"></script>
+    <script src="static/js/prereq.js"></script>
+</head>
+<body ng-controller="PrereqController">
+    <div class="container">
+        <div class="row">
+            <h1>{{ name }}</h1>
+        </div>
+        <div class="row">
+            <form ng-submit='submit()'>
+                <div class="panel panel-default">
+                    <table class='table'>
+                        <tr ng-repeat="req in reqForm.reqs">
+                            <td><input type="checkbox" name='prereqs' ng-model='req.isGood'></td>
+                            <td>{{ req.name }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <button class="btn btn-lg pull-right btn-success" type="submit">
+                    Submit these prerequisites
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

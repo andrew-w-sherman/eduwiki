@@ -1,0 +1,21 @@
+template(name='request')
+  .container
+    .row
+      h2 #{name}
+      .panel.panel-default
+        .panel-body !{html}
+        .panel-body
+          p #{comment}
+        .panel-body
+          +tagbox
+  +explanation
+
+template(name='explanation')
+  .modal.fade#explanation(tabindex='-1')
+    .modal-dialog.modal-sm
+      .modal-content
+        .modal-header
+          button.close(type='button')
+            span(aria-hidden='true') &times;
+        with topResponse
+          .modal-body !{response}

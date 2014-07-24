@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VMachine learning
+p3
+aVSupervised learning
+p4
+aVAlgorithm
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VMachine learning
+p10
+sS'snippet'
+p11
+Vis the property that the system will perform well on unseen data instances ; the conditions under which this can be guaranteed are a key object of study in the subfield of computational learning theory .
+p12
+sa(dp13
+g9
+VSupervised learning
+p14
+sg11
+VSupervised learning is the machine learning task of inferring a function from labeled training data .
+p15
+sa(dp16
+g9
+VAlgorithm
+p17
+sg11
+Vis a step-by-step procedure for calculations .
+p18
+sasS'name'
+p19
+VSupport vector machine
+p20
+sS'description'
+p21
+Vis a representation of the examples as points in space , mapped so that the examples of the separate categories are divided by a clear gap that is as wide as possible .
+p22
+s.

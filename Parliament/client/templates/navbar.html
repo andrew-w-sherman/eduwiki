@@ -1,0 +1,40 @@
+<template name='navbar'>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ pathFor 'home' }}">Parliament</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="{{ pathFor 'create' }}">Create</a></li>
+          {{#if currentUser}}
+            <li><a class="userPage">Me</a></li>
+          {{/if}}
+        </ul>
+        <form class="navbar-form navbar-left" role="search" id="tagsearch">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search for a query tag" id="searchfield">
+          </div>
+          <button type="submit" class="btn btn-default" id='searchsubmit'>Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <div class='pull-right'>
+            <div class='login'>
+              {{>loginButtons}}
+            </div>
+          </div>
+          <!-- RIGHT LINKS HERE -->
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</template>

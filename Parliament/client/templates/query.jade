@@ -1,0 +1,52 @@
+template(name='query')
+  .container
+    .row
+      h2 Explain #{query.query} from this material on #{query.topic}:
+    with request
+      .row
+        .panel.panel-default
+          .panel-body !{html}
+          .panel-body
+            p #{comment}
+          .panel-body
+            +tagbox
+    .row
+      if responses.count
+        h3 Here are some proposed explanations for the topic:
+      else
+        h3 There are no explanations yet. Write your own!
+    each responses
+      .row
+        img(src="{{createdBy.image}}").img-circle.userThumb.inline
+        div.inline.namevote
+          h3 #{createdBy.name} says:
+          .btn-group
+            if currentUser
+              button.btn.btn-danger.down
+                span.glyphicon.glyphicon-chevron-down
+              .btn.btn-default(disabled) #{votes}
+              button.btn.btn-success.up
+                span.glyphicon.glyphicon-chevron-up
+            else
+              button.btn.btn-danger.down(disabled)
+                span.glyphicon.glyphicon-chevron-down
+              .btn.btn-default(disabled) #{votes}
+              button.btn.btn-success.up(disabled)
+                span.glyphicon.glyphicon-chevron-up
+        .panel.panel-default
+          .panel-body !{response}
+    .row
+      if responses.count
+        h3 Add a response of your own:
+      if currentUser
+        form
+          .panel.panel-default
+            .panel-body
+              .form-control#editor
+            .panel-footer
+              button.btn.btn-success(type="button")#add Add this response
+      else
+        .panel.panel-default
+          .panel-body
+            h2 Please log in to submit a response:
+            +loginButtons

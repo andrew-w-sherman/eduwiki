@@ -1,0 +1,34 @@
+template(name='create')
+  if currentUser
+    +createForm
+  else
+    .container
+      .row
+        .panel.panel-default
+          .panel-body
+            h2 Please log in to submit a question:
+            +loginButtons
+
+template(name='createForm')
+  .container
+    .row
+      .col-xs-12
+        h1 Create a query:
+        br
+    .row
+      .col-md-8.col-md-offset-1
+        form
+          .form-group
+            label The specific topic of this query:
+            input(type='text' placeholder='Enter the topic').form-control#topic
+          .form-group
+            label Paste in the source you're using. Highlight any phrases that need clarification by selecting the text and clicking the underline button:
+            .form-control#editor
+          .form-group
+            label A brief comment on why you're confused:
+            textarea.form-control#comment(rows='7' placeholder="Comment on what's confusing you")
+          .form-group
+            label Tags, keep them general so people can find your query:
+            input(type='text' placeholder='Enter comma-separated tags').form-control#tags
+          .form-group
+            button.btn.btn-success.pull-right.btn-lg#submit(type='button') Submit

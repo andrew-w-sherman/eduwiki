@@ -1,0 +1,45 @@
+(dp0
+S'prereqs'
+p1
+(lp2
+VLearning
+p3
+aVComputational learning theory
+p4
+aVOptical character recognition
+p5
+asS'distractors'
+p6
+(lp7
+(dp8
+S'pagetitle'
+p9
+VLearning
+p10
+sS'snippet'
+p11
+Vis the act of acquiring new , or modifying and reinforcing , existing knowledge , behaviors , skills , values , or preferences and may involve synthesizing different types of information .
+p12
+sa(dp13
+g9
+VComputational learning theory
+p14
+sg11
+Vis a mathematical field related to the analysis of machine learning algorithms .
+p15
+sa(dp16
+g9
+VOptical character recognition
+p17
+sg11
+Vis the mechanical or electronic conversion of scanned or photographed images of typewritten or printed text into machine-encoded/computer-readable text .
+p18
+sasS'name'
+p19
+VMachine learning
+p20
+sS'description'
+p21
+Vis the property that the system will perform well on unseen data instances ; the conditions under which this can be guaranteed are a key object of study in the subfield of computational learning theory .
+p22
+s.

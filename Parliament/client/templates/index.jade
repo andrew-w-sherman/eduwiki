@@ -1,0 +1,38 @@
+head
+  title Parliament
+body
+  +navbar
+
+template(name='home')
+  +intro
+  +latest
+
+template(name='intro')
+  .jumbotron
+    .container
+      h1 Parliament
+      p is a cool thing that lets you make queries to simplify a body of information into a learnable format
+      button#create.btn.btn-primary.btn-lg Create a query!
+
+
+template(name='latest')
+  .container
+    .row
+      .panel.panel-default
+        .panel-heading
+          h2 Latest Queries
+        table.table
+          thead
+            tr
+              th Query
+              th Topic
+              th Tags
+          tbody
+            each latest
+              tr
+                td
+                  a(href="{{pathFor 'query'}}") #{query}
+                td
+                  a(href="{{pathFor 'request' _id=this.request}}") #{topic}
+                td.tagcol
+                  +tagbox
